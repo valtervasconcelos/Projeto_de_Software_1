@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN'>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>testreport UC004 - Configurar e-mail</title>
+<link type="text/css" rel="stylesheet" href="http://www.testarget.com.br/testlink/gui/themes/default/css/tl_documents.css" />
+<style type="text/css" media="print">.notprintable { display:none;}</style>
+</head>
+<body>
+<div>
+<div style="float:right;">Testarget</div>
+<div>NOVAROMA_TCS04_2012.2_TESTJA</div><hr />
+<p style="text-align: center;"><img alt="TestLink logo" title="configure using $tlCfg->company->logo_image" src="http://www.testarget.com.br/testlink/gui/themes/default/images/logo.png" /></p></div>
+<div class="doc_title"><p>UC004 - Configurar e-mail</p><p>Relatório de Teste</p></div>
+<div class="summary"><p id="prodname">Projeto: NOVAROMA_TCS04_2012.2_TESTJA</p>
+<p id="author">Autor: Irenildo Neto</p>
+<p id="printedby">Impresso por Testlink em 30/11/2012</p></div>
+<div class="pagefooter" id="copyright">2009 &copy; Testlink Community</div>
+<div style="page-break-after:always;"></div><h1 class='doclevel'>1 Suite de Teste : UC004 - Configurar e-mail</h1>
+<p>&nbsp;</p><div><table class="tc" width="90%">
+<tr><th colspan="2">Caso de Teste TJ-15: CT015 - Configurar e-mail com sucesso</th></tr>
+<tr><td colspan="2"><span class="label">Sumário::</span><br /><p>&nbsp;Usu&aacute;rio cadastrado no sistema e a tela de edi&ccedil;&atilde;o presente para o usu&aacute;rio.</p></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Último Status:</span></td><td><b>Passou</b></td></tr>
+<tr><td width="20%" valign="top">Baseline</td><td>Baseline 01</b></td></tr>
+<tr><td width="20%" valign="top">LOCALIZE: tester</td><td>Edson Junior</b></td></tr>
+</table>
+</div>
+<p>&nbsp;</p><div><table class="tc" width="90%">
+<tr><th colspan="2">Caso de Teste TJ-16: CT016 - Configurar e-mail sem sucesso - Ausência de marcação</th></tr>
+<tr><td colspan="2"><span class="label">Sumário::</span><br /><p>&nbsp;Usu&aacute;rio cadastrado no sistema e a tela de edi&ccedil;&atilde;o presente para o usu&aacute;rio.</p></td></tr>
+<tr><td width="20%" valign="top"><span class="label">Último Status:</span></td><td><b>Com Falha</b></td></tr>
+<tr><td width="20%" valign="top">Baseline</td><td>Baseline 01</b></td></tr>
+<tr><td width="20%" valign="top">LOCALIZE: tester</td><td>Edson Junior</b></td></tr>
+<tr><td width="20%" valign="top">Descrição</td><td>Salva com sucesso mesmo com todas as opções em branco.</td></tr>
+</table>
+</div>
+
+</body>
+</html>

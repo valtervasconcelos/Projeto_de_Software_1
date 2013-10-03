@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN'>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>testplan Ciclo de Teste 01</title>
+<link type="text/css" rel="stylesheet" href="http://www.testarget.com.br/testlink/gui/themes/default/css/tl_documents.css" />
+<style type="text/css" media="print">.notprintable { display:none;}</style>
+</head>
+<body>
+<div>
+<div style="float:right;">Testarget</div>
+<div>NOVAROMA_TCS04_2012.2_TESTJA</div><hr />
+<p style="text-align: center;"><img alt="TestLink logo" title="configure using $tlCfg->company->logo_image" src="http://www.testarget.com.br/testlink/gui/themes/default/images/logo.png" /></p></div>
+<div class="doc_title"><p>Ciclo de Teste 01</p><p>Plano de Teste</p></div>
+<div class="summary"><p id="prodname">Projeto: NOVAROMA_TCS04_2012.2_TESTJA</p>
+<p id="author">Autor: Irenildo Neto</p>
+<p id="printedby">Impresso por Testlink em 30/11/2012</p></div>
+<div class="pagefooter" id="copyright">2009 &copy; Testlink Community</div>
+<div style="page-break-after:always;"></div><h1 class='doclevel'>1 Suite de Teste : UC001 – Logar no sistema</h1>
+<p>&nbsp;</p><div><table class="tc" width="90%">
+<tr><th colspan="2">Caso de Teste TJ-1:  CT001- Efetuar login com sucesso</th></tr>
+<tr><td colspan="2"><span class="label">Sumário::</span><br /><p>Usu&aacute;rio cadastrado no sistema e acessando o site.</p></td></tr>
+</table>
+</div>
+<p>&nbsp;</p><div><table class="tc" width="90%">
+<tr><th colspan="2">Caso de Teste TJ-2:  CT002- Efetuar login sem sucesso - E-mail Inválido</th></tr>
+<tr><td colspan="2"><span class="label">Sumário::</span><br /><p>&nbsp;Usu&aacute;rio cadastrado no sistema e acessando o site.</p></td></tr>
+</table>
+</div>
+<p>&nbsp;</p><div><table class="tc" width="90%">
+<tr><th colspan="2">Caso de Teste TJ-3: CT003- Efetuar login sem sucesso - SENHA Incorreta</th></tr>
+<tr><td colspan="2"><span class="label">Sumário::</span><br /><p>&nbsp;Usu&aacute;rio cadastrado no sistema e acessando o site.</p></td></tr>
+</table>
+</div>
+<p>&nbsp;</p><div><table class="tc" width="90%">
+<tr><th colspan="2">Caso de Teste TJ-4: CT004- Efetuar login sem sucesso – E-mail inexistente</th></tr>
+<tr><td colspan="2"><span class="label">Sumário::</span><br /><p>&nbsp;Usu&aacute;rio cadastrado no sistema e acessando o site.</p></td></tr>
+</table>
+</div>
+<h1 class='doclevel'>2 Suite de Teste : UC002 –  Editar dados</h1>
+<p>&nbsp;</p><div><table class="tc" width="90%">
+<tr><th colspan="2">Caso de Teste TJ-5: CT005- Editar dados com sucesso</th></tr>
+<tr><td colspan="2"><span class="label">Sumário::</span><br /><p>&nbsp;Usu&aacute;rio deve estar logado no sistema.</p></td></tr>
+</table>
+</div>
+<p>&nbsp;</p><div><table class="tc" width="90%">
+<tr><th colspan="2">Caso de Teste TJ-6: CT006- Editar dados sem sucesso - NOME do usuário vazio</th></tr>
+<tr><td colspan="2"><span class="label">Sumário::</span><br /><p>&nbsp;Usu&aacute;rio deve estar logado no sistema.</p></td></tr>
+</table>
+</div>
+<p>&nbsp;</p><div><table class="tc" width="90%">
+<tr><th colspan="2">Caso de Teste TJ-7: CT007- Editar dados sem sucesso  -  SOBRENOME do usuário vazio</th></tr>
+<tr><td colspan="2"><span class="label">Sumário::</span><br /><p>Usu&aacute;rio deve estar logado no sistema.</p></td></tr>
+</table>
+</div>
+<p>&nbsp;</p><div><table class="tc" width="90%">
+<tr><th colspan="2">Caso de Teste TJ-8: CT008- Editar dados sem sucesso - E-MAIL INVÁLIDO</th></tr>
+<tr><td colspan="2"><span class="label">Sumário::</span><br /><p>&nbsp;Usu&aacute;rio deve estar logado no sistema.</p></td></tr>
+</table>
+</div>
+<p>&nbsp;</p><div><table class="tc" width="90%">
+<tr><th colspan="2">Caso de Teste TJ-9: CT009- Editar dados sem sucesso – DATA ANIVERSARIO INVALIDA</th></tr>
+<tr><td colspan="2"><span class="label">Sumário::</span><br /><p>&nbsp;Usu&aacute;rio deve estar logado no sistema.</p></td></tr>
+</table>
+</div>
+<p>&nbsp;</p><div><table class="tc" width="90%">
+<tr><th colspan="2">Caso de Teste TJ-10: CT010- Editar dados sem sucesso – BAIRRO INVÁLIDO</th></tr>
+<tr><td colspan="2"><span class="label">Sumário::</span><br /><p>&nbsp;Usu&aacute;rio deve estar logado no sistema.</p></td></tr>
+</table>
+</div>
+<h1 class='doclevel'>3 Suite de Teste : UC003 - Alterar Senha</h1>
+<p>&nbsp;</p><div><table class="tc" width="90%">
+<tr><th colspan="2">Caso de Teste TJ-11: CT011- Alterar Senha com sucesso</th></tr>
+<tr><td colspan="2"><span class="label">Sumário::</span><br /><p>&nbsp;Usu&aacute;rio deve estar logado no sistema.</p>
+<div>A tela de edi&ccedil;&atilde;o de dados est&aacute; presente para o usu&aacute;rio.</div></td></tr>
+</table>
+</div>
+<p>&nbsp;</p><div><table class="tc" width="90%">
+<tr><th colspan="2">Caso de Teste TJ-12: CT012 - Alterar Senha sem sucesso - Senha atual incorreta</th></tr>
+<tr><td colspan="2"><span class="label">Sumário::</span><br /><p>&nbsp;Usu&aacute;rio deve estar logado no sistema.</p>
+<div>A tela de edi&ccedil;&atilde;o de dados est&aacute; presente para o usu&aacute;rio.</div></td></tr>
+</table>
+</div>
+<p>&nbsp;</p><div><table class="tc" width="90%">
+<tr><th colspan="2">Caso de Teste TJ-13: CT013 - Alterar senha sem sucesso - Nova senha vazia</th></tr>
+<tr><td colspan="2"><span class="label">Sumário::</span><br /><p>&nbsp;Usu&aacute;rio deve estar logado no sistema.</p>
+<div>A tela de edi&ccedil;&atilde;o de dados est&aacute; presente para o usu&aacute;rio.</div></td></tr>
+</table>
+</div>
+<p>&nbsp;</p><div><table class="tc" width="90%">
+<tr><th colspan="2">Caso de Teste TJ-14: CT014 - Alterar senha sem sucesso - Repetir senha diferente de nova senha</th></tr>
+<tr><td colspan="2"><span class="label">Sumário::</span><br /><p>&nbsp;Usu&aacute;rio deve estar logado no sistema.</p>
+<div>A tela de edi&ccedil;&atilde;o de dados est&aacute; presente para o usu&aacute;rio.</div></td></tr>
+</table>
+</div>
+<h1 class='doclevel'>4 Suite de Teste : UC004 - Configurar e-mail</h1>
+<p>&nbsp;</p><div><table class="tc" width="90%">
+<tr><th colspan="2">Caso de Teste TJ-15: CT015 - Configurar e-mail com sucesso</th></tr>
+<tr><td colspan="2"><span class="label">Sumário::</span><br /><p>&nbsp;Usu&aacute;rio cadastrado no sistema e a tela de edi&ccedil;&atilde;o presente para o usu&aacute;rio.</p></td></tr>
+</table>
+</div>
+<p>&nbsp;</p><div><table class="tc" width="90%">
+<tr><th colspan="2">Caso de Teste TJ-16: CT016 - Configurar e-mail sem sucesso - Ausência de marcação</th></tr>
+<tr><td colspan="2"><span class="label">Sumário::</span><br /><p>&nbsp;Usu&aacute;rio cadastrado no sistema e a tela de edi&ccedil;&atilde;o presente para o usu&aacute;rio.</p></td></tr>
+</table>
+</div>
+
+</body>
+</html>
