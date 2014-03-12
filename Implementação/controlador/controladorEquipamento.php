@@ -27,15 +27,7 @@ class controladorEquipamento {
     public function listarEquipamento() {
         return $this->oRepoEquipamento->listar();
     }
-    
-    public function listarEquipamentoPorId($id) {
-        return $this->oRepoEquipamento->listarPorId($id);
-    }
-    
-    public function listarEquipamentoPorInstalacao($inst_id, $acao) {
-        return $this->oRepoEquipamento->listarEquipamentoInstalacao($inst_id, $acao);
-    }
-    
+	
     public function validarEquipamento($params) {
         return $this->oRepoEquipamento->validar($params);
     }

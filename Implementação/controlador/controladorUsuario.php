@@ -30,18 +30,11 @@ class controladorUsuario {
         return $this->oRepoUsuario->remover($id);
     }
     
-    public function listarUsuario($iCliente){
-        return $this->oRepoUsuario->listar($iCliente);
-    }
-    
+       
     public function listarUsuarioId($id){
         return $this->oRepoUsuario->listarPorId($id);
     }
-    
-    public function listarUsuarioMonitor(){
-        return $this->oRepoUsuario->listarMonitor();
-    }
-    
+           
     public function validarUsuario($params){
         return $this->oRepoUsuario->validar($params);
     }
