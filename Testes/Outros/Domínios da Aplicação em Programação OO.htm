@@ -1,0 +1,410 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0051)http://www.inf.furb.br/~poo/tutoriais/poo-lab6.html -->
+<HTML><HEAD><TITLE>Programação OO</TITLE>
+<META content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
+<META name=author content="Marcel / Jomi">
+<META name=GENERATOR content="MSHTML 9.00.8112.16448"><!-- saved from url=(0051)http://www.inf.furb.br/~poo/tutoriais/poo-lab5.html --><LINK 
+title=Style rel=stylesheet type=text/css 
+href="Domínios%20da%20Aplicação%20em%20Programação%20OO_arquivos/poo-lab.css"></HEAD>
+<BODY><A href="http://www.furb.br/">FURB</A> / <A 
+href="http://www.inf.furb.br/dsc">DSC</A><BR><B>Programação II: Orientação a 
+Objetos</B><BR>Profs. <A href="mailto:marcel@furb.br">Marcel Hugo</A> e <A 
+href="mailto:jomi@inf.furb.br">Jomi Fred Hübner</A> 
+<HR SIZE=1 noShade>
+
+<H2>Tutorial 6</H2>
+<H1>Objetos do domínio da aplicação</H1>
+<HR SIZE=1 noShade>
+
+<H2>Objetivo</H2>Empregar um método simples para identificação de classes em 
+problemas propostos. 
+<H2>Visão geral</H2>Dado um determinado problema, ser capaz de identificar quais 
+são as classes do domínio da aplicação que estão envolvidas e especificá-las. 
+<P>Portanto, os seguintes passos são necessários para atingir o objetivo:</P>
+<UL>
+  <LI>entender que a arquitetura de um software pode ser dividida em camadas; 
+  <LI>identificar os substantivos - candidatos a classes; 
+  <LI>identificar os adjetivos - candidatos a atributos; e 
+  <LI>identificar os verbos (ações) - candidatos a operações. </LI></UL>
+<H2>1. Arquitetura de software em camadas</H2>Sem procurar entrar em discussões 
+conceituais de Arquitetura de Software (que será alvo na disciplina de Projeto 
+de Software), vamos entender que a construção de um software também passa por 
+planejar sua estrutura, que é um dos aspectos da sua arquitetura.<BR>Atualmente 
+uma das abordagens empregadas para estruturar um software consiste em dividí-lo 
+em diferentes camadas, cada qual fornecendo serviços para as camadas adjacentes, 
+procurando deixar uma camada mais independente possível da outra camada (baixo 
+acoplamento).<BR>Como você pode observar na figura 1, um software pode ser 
+divido em basicamente três camadas: apresentação, domínio da aplicação e acesso 
+a dados. <BR><BR>
+<CENTER><IMG 
+src="Domínios%20da%20Aplicação%20em%20Programação%20OO_arquivos/imageO1V.jpg" 
+width=428 height=449><BR>Figura 1: três camadas na arquitetura de um 
+software</CENTER><BR>
+<P>A <B>camada de domínio da aplicação</B>, também conhecida como camada de 
+negócio ou de objetos de negócio, é aquela onde estão localizadas as classes que 
+fazem parte do domínio do problema, ou seja, classes correspondentes a objetos 
+que fazem parte da descrição do problema. Estas classes não são inventadas ou 
+criadas - pelo contrário, são <B>identificadas</B> na descrição do problema, 
+pois já existem naturalmente no entendimento a respeito do problema. Estas 
+classes existem independentemente da tecnologia que vai ser empregada para 
+armazenar os dados ou para implementar a interface com o usuário. </P>
+<P>A <B>camada de apresentação</B> se preocupa em oferecer uma interface ao 
+usuário. Assim, em determinado software sua camada de apresentação pode ser 
+implementada para a interface caracter. Também pode ter outra versão do software 
+implementando a apresentação para web, ou para interface gráfica, ou para wap e 
+assim por diante. É importante observar que a camada de apresentação pode ser 
+modificada sem que se modifique o que o usuário está esperando que o software 
+faça. Portanto sem modificar a camada de domínio da aplicação. </P>
+<P>A <B>camada de acesso aos dados</B> vai fornecer serviços para que os dados 
+possam ser armazenados e recuperados em algum meio específico. Esta camada vai 
+ser dependente da opção utilizada para este armezenamento: arquivos, bancos de 
+dados, bancos de objetos, etc. Porém, a maneira de armazenar os dados também não 
+afeta o que o usuário está esperando que o software faça. Portanto sem modificar 
+a camada de domínio da aplicação.</P>
+<P>Cada camada vai ser planejada e construída procurando oferecer os serviços 
+para a camada superior, sendo isoladas/independentes. Porém a busca por uma 
+solução para o problema inicia normalmente na camada de domínio da aplicação. E 
+como se identificam as classes que compõem esta camada ?<BR>&nbsp;<BR>&nbsp;</P>
+<H2>2. Um método simples de desenvolvimento de softwares orientados a 
+objeto</H2>Vamos definir uma forma - método - bem simples para identificar as 
+classes que fazem parte do domínio da aplicação, através da análise sintática da 
+descrição do problema. <BR>Basicamente são três passos:<BR>- identificação dos 
+substantivos (classes)<BR>- identificação dos adjetivos (atributos)<BR>- 
+identificação dos verbos (operações). 
+<P>Tendo a seguinte definição para um problema:<BR><FONT size=-1>Uma empresa 
+paga a seus viajantes(vendedores) um valor por km rodado que varia de acordo com 
+a quilometragem total de suas viagens no mês:</FONT> <BR><BR>
+<TABLE border=1 cellSpacing=0 cellPadding=5>
+  <TBODY>
+  <TR>
+    <TD vAlign=top>
+      <CENTER><B><FONT size=-1>Quilometragem</FONT></B></CENTER></TD>
+    <TD vAlign=top>
+      <CENTER><B><FONT size=-1>Valor por km rodado</FONT></B></CENTER></TD></TR>
+  <TR>
+    <TD vAlign=top>
+      <CENTER><FONT size=-1>até 150 km</FONT></CENTER></TD>
+    <TD vAlign=top>
+      <CENTER><FONT size=-1>R$ 0,40</FONT></CENTER></TD></TR>
+  <TR>
+    <TD vAlign=top>
+      <CENTER><FONT size=-1>de 150 a 600 km (inclusive)</FONT></CENTER></TD>
+    <TD vAlign=top>
+      <CENTER><FONT size=-1>R$ 0,38</FONT></CENTER></TD></TR>
+  <TR>
+    <TD vAlign=top>
+      <CENTER><FONT size=-1>acima de 600 km</FONT></CENTER></TD>
+    <TD vAlign=top>
+      <CENTER><FONT size=-1>R$ 0,35</FONT></CENTER></TD></TR></TBODY></TABLE></P>
+<P><FONT size=-1>Faça um programa que:</FONT><BR><FONT size=-1>a) leia o nome do 
+vendedor. Para cada viagem leia a quilometragem, a duração (em dias) e o valor 
+de vendas na respectiva viagem. A leitura se encerra quando o nome do vendedor 
+for “fim”;</FONT><BR><FONT size=-1>b) calcule o valor a ser pago ao vendedor 
+referente à quilometragem;</FONT><BR><FONT size=-1>c) imprima os dados lidos no 
+item a e calculados no item b;</FONT> <BR><FONT size=-1>d) ao final, imprima o 
+nome dos viajantes com:</FONT><BR><FONT size=-1>&nbsp; d.1) viagem de menor 
+quilometragem;</FONT><BR><FONT size=-1>&nbsp; d.2) com maior valor a receber 
+;</FONT><BR><FONT size=-1>&nbsp; d.3) com maior valor total de vendas no 
+mês.</FONT> <BR><BR><FONT size=-1>&nbsp;Exemplo:</FONT> <BR><BR>
+<TABLE border=1 cellSpacing=0 cellPadding=3>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=109>
+      <DIV class=MsoNormal><B>Vendedor</B></DIV></TD>
+    <TD vAlign=top>
+      <DIV class=MsoNormal><B>Dia</B></DIV></TD>
+    <TD vAlign=top width=95>
+      <DIV class=MsoNormal><B>Quilometragem</B></DIV></TD>
+    <TD vAlign=top width=94>
+      <DIV class=MsoNormal><B>Vendas (R$)</B></DIV></TD>
+    <TD vAlign=top width=85>
+      <DIV class=MsoNormal><B>Total Km</B></DIV></TD>
+    <TD vAlign=top width=95>
+      <DIV class=MsoNormal><B>Valor</B></DIV></TD></TR>
+  <TR>
+    <TD vAlign=top width=109>
+      <DIV class=MsoNormal>João da Silva</DIV></TD>
+    <TD vAlign=top width=47>
+      <DIV style="TEXT-ALIGN: justify" class=MsoNormal>10</DIV></TD>
+    <TD vAlign=top width=95>
+      <DIV style="TEXT-ALIGN: justify" class=MsoNormal>40</DIV></TD>
+    <TD vAlign=top width=94>
+      <DIV style="TEXT-ALIGN: justify" class=MsoNormal>500,00</DIV></TD>
+    <TD vAlign=top width=85>
+      <DIV style="TEXT-ALIGN: justify" class=MsoNormal>290</DIV></TD>
+    <TD vAlign=top width=95>
+      <DIV style="TEXT-ALIGN: justify" class=MsoNormal>R$ 110,20</DIV></TD></TR>
+  <TR>
+    <TD vAlign=top width=109>&nbsp;</TD>
+    <TD vAlign=top width=47>
+      <DIV style="TEXT-ALIGN: justify" class=MsoNormal>11</DIV></TD>
+    <TD vAlign=top width=95>
+      <DIV style="TEXT-ALIGN: justify" class=MsoNormal>150</DIV></TD>
+    <TD vAlign=top width=94>
+      <DIV style="TEXT-ALIGN: justify" class=MsoNormal>620,00</DIV></TD>
+    <TD vAlign=top width=85>&nbsp;</TD>
+    <TD vAlign=top width=95>&nbsp;</TD></TR>
+  <TR>
+    <TD vAlign=top width=109>&nbsp;</TD>
+    <TD vAlign=top width=47>
+      <DIV style="TEXT-ALIGN: justify" class=MsoNormal>15</DIV></TD>
+    <TD vAlign=top width=95>
+      <DIV style="TEXT-ALIGN: justify" class=MsoNormal>100</DIV></TD>
+    <TD vAlign=top width=94>
+      <DIV style="TEXT-ALIGN: justify" class=MsoNormal>130,00</DIV></TD>
+    <TD vAlign=top width=85>&nbsp;</TD>
+    <TD vAlign=top width=95>&nbsp;</TD></TR>
+  <TR>
+    <TD vAlign=top width=109>
+      <DIV style="TEXT-ALIGN: justify" class=MsoNormal>Maria Pedrosa</DIV></TD>
+    <TD vAlign=top width=47>
+      <DIV style="TEXT-ALIGN: justify" class=MsoNormal>12</DIV></TD>
+    <TD vAlign=top width=95>
+      <DIV style="TEXT-ALIGN: justify" class=MsoNormal>145</DIV></TD>
+    <TD vAlign=top width=94>
+      <DIV style="TEXT-ALIGN: justify" class=MsoNormal>900,00</DIV></TD>
+    <TD vAlign=top width=85>
+      <DIV style="TEXT-ALIGN: justify" class=MsoNormal>145</DIV></TD>
+    <TD vAlign=top width=95>
+      <DIV style="TEXT-ALIGN: justify" class=MsoNormal>R$ 
+  58,00</DIV></TD></TR></TBODY></TABLE></P>
+<P>vamos começar a seguir nosso método de desenvolvimento.<BR>&nbsp;</P>
+<H2>3. Identificação dos substantivos</H2>Você vai identificar quais são os 
+principais substantivos existentes na descrição do problema, ou seja, você vai 
+identificar a respeito de que o problema está tratando. Um problema trata de 
+coisas que existem no mundo real e que então você consegue identificar 
+naturalmente.<BR>No nosso exemplo, o problema está tratando de vendedores que 
+realizam viagens, as quais devem ser reembolsadas pela quilometragem.<BR>Vários 
+substantivos aparecem no enunciado: empresa, vendedor, viagem, valor, 
+quilometragem, venda, etc. Nem todos estes substantivos representam objetos que 
+participam do problema, pois eles podem participar de locuções adjetivas, 
+caracterizando-se como atributos de objetos. Por exemplo, valor é um substantivo 
+indicando uma informação a respeito de outra coisa: valor da venda, valor da 
+viagem.<BR>Vamos lembrar que objetos podem ser pessoas, coisas, entes concretos 
+do mundo real, mas também podem ser conceitos, idéias bem definidas também 
+presentes no mundo real. No nosso exemplo, vendedor é uma pessoa - portanto um 
+objeto concreto no mundo real. Porém, viagem não é algo concreto, palpável - mas 
+é uma idéia bem definida que temos a respeito de um fato. Temos assim objetos de 
+vendedores e objetos de viagens - assim teremos a classe Vendedor e a classe 
+Viagem. <BR>Por que os outros substantivos não são também objetos ? Apesar de 
+também existirem no mundo real, eles não estão representando coisas 
+importantes/relevantes para nosso problema. Por exemplo, <U>empresa</U> aparece 
+como ilustrativo que o sistema atende a uma empresa, mas não há nenhum dado ou 
+informação que se queira a respeito da empresa - diferentemente de Vendedor e 
+Viagem que se quer várias informações a respeito. 
+<H2>4. Identificação dos adjetivos</H2>Os adjetivos, associados aos substantivos 
+identificados, caracterizam os objetos de alguma maneira. Características de um 
+objeto indicam que este objeto possui atributos.<BR>Como já mencionado no tópico 
+anterior, nem todos os substantivos são classes do problema. Alguns deles 
+participam de locuções adjetivas e indicam propriedades ou características de 
+objetos, tornando-se também atributos da classe identificada. 
+<P>Veja que podemos retirar do enunciado as frases abaixo:</P>
+<DL>
+  <LI>quilometragem total de suas viagens (viagens do vendedor): viagem do 
+  vendedor, quilometragem da viagem 
+  <LI>nome do vendedor 
+  <LI>duração da viagem 
+  <LI>valor de vendas na viagem 
+  <LI>valor pago ao vendedor na viagem </LI></DL>
+<P><BR>Todas estas frases indicam dados ou informações que se quer a respeito do 
+vendedor ou da viagem:</P>
+<BLOCKQUOTE>
+  <UL>
+    <LI>Vendedor: nome e viagens 
+    <LI>Viagem: quilometragem, duração, valor de vendas, valor pago 
+</LI></UL></BLOCKQUOTE>Cabe agora determinar se estes dados serão atributos do 
+objeto ou se podem ser calculados a partir de outros atributos, e portanto, não 
+precisam fazer parte da estrutura do objeto. No nosso exemplo, o atributo valor 
+pago da Viagem pode ser calculado baseado na quilometragem (atributo) e nos 
+valores fixados para este pagamento.<BR>Também neste passo podemos identificar 
+as relações existentes entre os objetos identificados. Para o vendedor queremos 
+saber suas viagens, mas viagem não é um atributo simples de algum tipo 
+primitivo, como int ou float, e sim ela é um objeto da classe Viagem. Desta 
+maneira há uma relação entre objetos de Viagem e objetos de Vendedor. Na 
+modelagem OO este relação pode ser definida de duas maneiras distintas: 
+<UL>
+  <LI><B>associação</B>: quando um objeto faz uma menção a outro objeto, 
+  precisando guardar uma relação mas sem que exista dependência entre eles; 
+  <LI><B>agregação</B>: quando há uma forte relação, criando um vínvulo de 
+  dependência entre os objetos relacionados. </LI></UL>No nosso caso, só se fala 
+nas viagens do vendedor, ou seja, não há sentido em falar em viagem fora do 
+contexto do trabalho do vendedor. Assim, viagem é dependente do vendedor, 
+fazendo com que vendedor agregue viagens. O conceito e implementação de 
+Agregação já foram vistos no tutorial 5. 
+<H2>5. Identificação dos verbos</H2>As ações - expressas através de verbos - são 
+fortes indicativos das principais operações necessárias em uma classe. Elas 
+indicam o que está sendo feito com os objetos e seus atributos. No nosso 
+exemplo, "calcular o valor a ser pago ao vendedor" indica que na classe Vendedor 
+vai haver uma operação para calcular o valor a pagar. Mas o vendedor não possui 
+atributos relacionados a valores ou quilometragens, como ele fará para calcular 
+o valor ?&nbsp; O vendedor sabe quais são suas viagens - Viagem é agregado a 
+Vendedor - assim ele pode perguntar a cada viagem qual foi seu custo ou valor a 
+pagar e então responder qual é o total a pagar. Isto nos leva a uma operação em 
+Viagem que calcule o valor a pagar da viagem e uma operação no Vendedor que 
+totaliza os valores a pagar de suas viagens.<BR>Além disto, não podemos nos 
+esquecer das operações que vão permitir acessar (<I>get</I>) e modificar 
+(<I>set</I>) os atributos, que estão encapsulados no objeto. 
+<P>O diagrama de classes para a camada de domínio da aplicação do exemplo está 
+apresentado na figura 2.<BR><BR></P>
+<CENTER>
+<P><IMG 
+src="Domínios%20da%20Aplicação%20em%20Programação%20OO_arquivos/imageS0S.jpg" 
+width=470 height=167><BR>Figura 2: diagrama de classes da camada de domínio da 
+aplicação</P></CENTER><BR><BR>
+<H2>Código fonte final</H2><!-- ======================================================== --><!-- = Java Sourcecode to HTML automatically converted code = --><!-- =   J2H V2.0  2002 by Markus Gebhard  markus@jave.de   = --><!-- =     Further information: http://www.java2html.de     = -->
+<TABLE border=2 cellSpacing=0 cellPadding=3 bgColor=#fffbf0><!-- start headline -->
+  <TBODY>
+  <TR>
+    <TD colSpan=2>
+      <CENTER><FONT size=+2><CODE><B>Vendedor.java 
+  </B></CODE></FONT></CENTER></TD></TR><!-- end headline -->
+  <TR><!-- start line numbers -->
+    <TD vAlign=top align=right><CODE><FONT 
+      color=#808080>1<BR>2<BR>3<BR>4<BR>5<BR>6<BR>7<BR>8<BR>9<BR>10<BR>11<BR>12<BR>13<BR>14<BR>15<BR>16<BR>17<BR>18<BR>19<BR>20<BR>21<BR>22<BR>23<BR>24<BR>25<BR>26<BR>27<BR>28<BR>29<BR>30<BR>31<BR>32<BR>33<BR>34<BR></FONT></CODE></TD><!-- end line numbers --><!-- start source code -->
+    <TD vAlign=top><CODE><FONT color=#0000c0>import&nbsp;</FONT><FONT 
+      color=#000000>java.util.ArrayList;<BR><BR></FONT><FONT 
+      color=#0000c0>public&nbsp;class&nbsp;</FONT><FONT 
+      color=#000000>Vendedor<BR>{&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#008000>//&nbsp;Atributos<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>private&nbsp;</FONT><FONT 
+      color=#000000>String&nbsp;nome;<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>private&nbsp;</FONT><FONT 
+      color=#000000>ArrayList&nbsp;viagens&nbsp;=&nbsp;</FONT><FONT 
+      color=#0000c0>new&nbsp;</FONT><FONT 
+      color=#000000>ArrayList();<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#008000>//&nbsp;Métodos<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>public&nbsp;</FONT><FONT 
+      color=#c00000>boolean&nbsp;</FONT><FONT 
+      color=#000000>setNome(String&nbsp;str)<BR>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>if&nbsp;</FONT><FONT 
+      color=#000000>(str&nbsp;==&nbsp;</FONT><FONT 
+      color=#0000c0>null&nbsp;</FONT><FONT 
+      color=#000000>||&nbsp;str.equals(</FONT><FONT color=#990000>""</FONT><FONT 
+      color=#000000>))<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>return&nbsp;false</FONT><FONT 
+      color=#000000>;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nome&nbsp;=&nbsp;str;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>return&nbsp;true</FONT><FONT 
+      color=#000000>;<BR>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>public&nbsp;</FONT><FONT 
+      color=#000000>String&nbsp;getNome()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;</FONT><FONT 
+      color=#0000c0>return&nbsp;</FONT><FONT 
+      color=#000000>nome;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>public&nbsp;</FONT><FONT 
+      color=#c00000>boolean&nbsp;</FONT><FONT 
+      color=#000000>addViagem(Viagem&nbsp;v)<BR>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;viagens.add(v);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>return&nbsp;true</FONT><FONT 
+      color=#000000>;<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>public&nbsp;</FONT><FONT 
+      color=#c00000>float&nbsp;</FONT><FONT 
+      color=#000000>getValorAPagar()<BR>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#c00000>float&nbsp;</FONT><FONT 
+      color=#000000>total&nbsp;=&nbsp;</FONT><FONT color=#990000>0</FONT><FONT 
+      color=#000000>;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Viagem&nbsp;v;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>for&nbsp;</FONT><FONT color=#000000>(</FONT><FONT 
+      color=#c00000>int&nbsp;</FONT><FONT color=#000000>i=</FONT><FONT 
+      color=#990000>0</FONT><FONT 
+      color=#000000>;&nbsp;i&lt;viagens.size();&nbsp;i++)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;v&nbsp;=&nbsp;(Viagem)viagens.get(i);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;total&nbsp;+=&nbsp;v.getValorAPagar();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>return&nbsp;</FONT><FONT 
+      color=#000000>total;<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR><BR>}</FONT></CODE> 
+    </TD></TR><!-- end source code --><!-- start J2H link -->
+  <TR>
+    <TD colSpan=2 align=right><SMALL><A href="http://www.java2html.de/" 
+      target=_blank>Java2html</A></SMALL> 
+</TD></TR><!-- end J2H link --></TBODY></TABLE><!-- =       END of automatically generated HTML code       = --><!-- ======================================================== -->
+<P><!-- ======================================================== --><!-- = Java Sourcecode to HTML automatically converted code = --><!-- =   J2H V2.0  2002 by Markus Gebhard  markus@jave.de   = --><!-- =     Further information: http://www.java2html.de     = --></P>
+<TABLE border=2 cellSpacing=0 cellPadding=3 bgColor=#fffbf0><!-- start headline -->
+  <TBODY>
+  <TR>
+    <TD colSpan=2>
+      <CENTER><FONT size=+2><CODE><B>Viagem.java 
+  </B></CODE></FONT></CENTER></TD></TR><!-- end headline -->
+  <TR><!-- start line numbers -->
+    <TD vAlign=top align=right><CODE><FONT 
+      color=#808080>1<BR>2<BR>3<BR>4<BR>5<BR>6<BR>7<BR>8<BR>9<BR>10<BR>11<BR>12<BR>13<BR>14<BR>15<BR>16<BR>17<BR>18<BR>19<BR>20<BR>21<BR>22<BR>23<BR>24<BR>25<BR>26<BR>27<BR>28<BR>29<BR>30<BR>31<BR>32<BR>33<BR>34<BR>35<BR>36<BR>37<BR>38<BR>39<BR>40<BR>41<BR>42<BR>43<BR>44<BR></FONT></CODE></TD><!-- end line numbers --><!-- start source code -->
+    <TD vAlign=top><CODE><FONT 
+      color=#0000c0>public&nbsp;class&nbsp;</FONT><FONT 
+      color=#000000>Viagem&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#008000>//&nbsp;Atributos<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>private&nbsp;</FONT><FONT 
+      color=#c00000>int&nbsp;</FONT><FONT 
+      color=#000000>km,&nbsp;duração;<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>private&nbsp;</FONT><FONT 
+      color=#c00000>float&nbsp;</FONT><FONT 
+      color=#000000>valorVendas;<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#008000>//&nbsp;Métodos<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>public&nbsp;</FONT><FONT 
+      color=#c00000>boolean&nbsp;</FONT><FONT color=#000000>setKM(</FONT><FONT 
+      color=#c00000>int&nbsp;</FONT><FONT 
+      color=#000000>nkm)<BR>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>if&nbsp;</FONT><FONT 
+      color=#000000>(nkm&nbsp;&lt;&nbsp;</FONT><FONT color=#990000>1</FONT><FONT 
+      color=#000000>)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>return&nbsp;false</FONT><FONT 
+      color=#000000>;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;km&nbsp;=&nbsp;nkm;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>return&nbsp;true</FONT><FONT 
+      color=#000000>;<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>public&nbsp;</FONT><FONT 
+      color=#c00000>boolean&nbsp;</FONT><FONT 
+      color=#000000>setDuração(</FONT><FONT color=#c00000>int&nbsp;</FONT><FONT 
+      color=#000000>dias)<BR>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>if&nbsp;</FONT><FONT 
+      color=#000000>(dias&nbsp;&lt;&nbsp;</FONT><FONT 
+      color=#990000>1</FONT><FONT 
+      color=#000000>)&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>return&nbsp;false</FONT><FONT 
+      color=#000000>;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;duração&nbsp;=&nbsp;dias;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>return&nbsp;true</FONT><FONT 
+      color=#000000>;<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>public&nbsp;</FONT><FONT 
+      color=#c00000>boolean&nbsp;</FONT><FONT 
+      color=#000000>setValorVendas(</FONT><FONT 
+      color=#c00000>float&nbsp;</FONT><FONT 
+      color=#000000>valor)<BR>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>if&nbsp;</FONT><FONT 
+      color=#000000>(valor&nbsp;&gt;=</FONT><FONT color=#990000>0</FONT><FONT 
+      color=#000000>)&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valorVendas&nbsp;=&nbsp;valor;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>return&nbsp;true</FONT><FONT 
+      color=#000000>;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>else<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false</FONT><FONT 
+      color=#000000>;<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>public&nbsp;</FONT><FONT color=#c00000>int&nbsp;</FONT><FONT 
+      color=#000000>getKM()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;</FONT><FONT 
+      color=#0000c0>return&nbsp;</FONT><FONT 
+      color=#000000>km;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>public&nbsp;</FONT><FONT color=#c00000>int&nbsp;</FONT><FONT 
+      color=#000000>getDuração()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;</FONT><FONT 
+      color=#0000c0>return&nbsp;</FONT><FONT 
+      color=#000000>duração;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>public&nbsp;</FONT><FONT 
+      color=#c00000>float&nbsp;</FONT><FONT 
+      color=#000000>getValorVendas()&nbsp;&nbsp;&nbsp;{&nbsp;</FONT><FONT 
+      color=#0000c0>return&nbsp;</FONT><FONT 
+      color=#000000>valorVendas;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>public&nbsp;</FONT><FONT 
+      color=#c00000>float&nbsp;</FONT><FONT 
+      color=#000000>getValorAPagar()<BR>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#c00000>float&nbsp;</FONT><FONT 
+      color=#000000>valorKM;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>if&nbsp;</FONT><FONT 
+      color=#000000>(km&nbsp;&lt;&nbsp;</FONT><FONT 
+      color=#990000>150</FONT><FONT 
+      color=#000000>)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valorKM&nbsp;=&nbsp;</FONT><FONT 
+      color=#990000>0.4f</FONT><FONT 
+      color=#000000>;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>else<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;</FONT><FONT 
+      color=#000000>(km&nbsp;&lt;&nbsp;</FONT><FONT 
+      color=#990000>601</FONT><FONT 
+      color=#000000>)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valorKM&nbsp;=&nbsp;</FONT><FONT 
+      color=#990000>0.38f</FONT><FONT 
+      color=#000000>;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>else<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#000000>valorKM&nbsp;=&nbsp;</FONT><FONT 
+      color=#990000>0.35f</FONT><FONT 
+      color=#000000>;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT 
+      color=#0000c0>return&nbsp;</FONT><FONT 
+      color=#000000>(km&nbsp;*&nbsp;valorKM);<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>}</FONT></CODE> 
+    </TD></TR><!-- end source code --><!-- start J2H link -->
+  <TR>
+    <TD colSpan=2 align=right><SMALL><A href="http://www.java2html.de/" 
+      target=_blank>Java2html</A></SMALL> 
+</TD></TR><!-- end J2H link --></TBODY></TABLE><!-- =       END of automatically generated HTML code       = --><!-- ======================================================== --><BR></BODY></HTML>
